@@ -1,5 +1,5 @@
-# ez_web
-Easiest way to make get and post requests with aiohttp.  
+# ez_aio
+Easiest way to make tons of get/post requests with aiohttp.  
 You need DIY to get/post with different proxy/headers/cookies, or delete/patch/put request.  
 ## Singel GET
     url = 'https://www.baidu.com'
@@ -14,12 +14,12 @@ You need DIY to get/post with different proxy/headers/cookies, or delete/patch/p
     urls = ['https://httpbin.org/post'] * 100
     data = [{'a': n} for n in range(100)]
     results = [aio.post(urls, data=data, func=print)]
-## speedtest
+## Singel GET speedtest
     # requests might raise errors
     a = timeit.repeat("requests.get('https://www.baidu.com', headers=header0)",
-                      setup='import requests\nfrom ez_web import header0', repeat=10, number=1)
+                      setup='import requests\nfrom ez_aio import header0', repeat=10, number=1)
     b = timeit.repeat("aio.get(['https://www.baidu.com'], headers=header0)",
-                      setup='from ez_web import aio, header0',  repeat=10, number=1)
+                      setup='from ez_aio import aio, header0',  repeat=10, number=1)
     for x, y in ((a, 'requests'), (b, 'aiohttp')):
         print(y)
         print(f'{mean(x):.3f} ± {stdev(x):.3f} s, (range) [{min(x):.3f}, {max(x):.3f}]')
@@ -33,7 +33,7 @@ You need DIY to get/post with different proxy/headers/cookies, or delete/patch/p
 * binary: result = response.text() if binary else response.read()
 * func: return func(result, *) if func else return result
 * fdata: func(result, fdata[i] if fdata else func(result)
-* li: max of session
+* li: max of session, 99 be default
 * forced: only return response.status in [200, 403] if forced
 * ssl: ssl
 * proxy: proxy

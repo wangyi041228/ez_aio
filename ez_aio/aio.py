@@ -1,5 +1,5 @@
 """
-Easiest way to make get and post requests with aiohttp.
+Easiest way to make tons of get/post requests with aiohttp.
 """
 from asyncio import get_event_loop, gather, sleep  # ensure_future, run
 from aiohttp import ClientSession, TCPConnector
@@ -90,7 +90,7 @@ def get(urls, binary=False, func=None, fdata=None, li=99, forced=True, ssl=False
     :param binary: result = response.text() if binary else response.read()
     :param func: return func(result, *) if func else return result
     :param fdata: func(result, fdata[i] if fdata else func(result)
-    :param li: max of session
+    :param li: max of session, 99 be default
     :param forced: only return response.status in [200, 403] if forced
     :param ssl: ssl
     :param proxy: proxy
@@ -123,7 +123,7 @@ def post(urls, data=None, binary=False, func=None, fdata=None, li=99, forced=Tru
     :param binary: result = response.text() if binary else response.read()
     :param func: return func(result, *) if func else return result
     :param fdata: func(result, fdata[i] if fdata else func(result)
-    :param li: max of session
+    :param li: max of session, 99 be default
     :param forced: only return response.status in [200, 403] if forced
     :param ssl: ssl
     :param proxy: proxy

@@ -1,4 +1,4 @@
-from ez_web import aio, header0
+from ez_aio import aio, header0
 from time import perf_counter as perf
 import timeit
 from statistics import mean, stdev
@@ -39,9 +39,9 @@ def post_test():
 
 def speedtest():
     a = timeit.repeat("requests.get('https://www.baidu.com', headers=header0)",
-                      setup='import requests\nfrom ez_web import header0', repeat=10, number=1)
+                      setup='import requests\nfrom ez_aio import header0', repeat=10, number=1)
     b = timeit.repeat("aio.get(['https://www.baidu.com'], headers=header0)",
-                      setup='from ez_web import aio, header0',  repeat=10, number=1)
+                      setup='from ez_aio import aio, header0',  repeat=10, number=1)
     for x, y in ((a, 'requests'), (b, 'aiohttp')):
         print(y)
         print(f'{mean(x):.3f} ± {stdev(x):.3f} s, (range) [{min(x):.3f}, {max(x):.3f}]')

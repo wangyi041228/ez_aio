@@ -1,5 +1,5 @@
 """
-Easiest way to make get and post requests with aiohttp.
+Easiest way to make tons of get/post requests with aiohttp.
 You need DIY to get/post with different proxy/headers/cookies, or delete/patch/put request.
 
 Supporting for more libs might be on the way.
